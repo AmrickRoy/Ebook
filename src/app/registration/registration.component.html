@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://www.markuptag.com/bootstrap/5/css/bootstrap.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 offset-md-4">
+                <div class="login-form bg-light mt-4 p-4 card">
+                    <form class="row g-3" [formGroup]="registerForm" (ngSubmit)="registerSubmit(registerForm)">
+                        <h4>CREATE NEW ACCOUNT</h4>
+                        <div class="col-12">
+                            <label>Name</label>
+                            <input type="text" name="username" class="form-control" formControlName="name"
+                                placeholder="Username">
+                            <span *ngIf="registerForm.get('name').invalid && submitForm">*please enter your name</span>
+
+                        </div>
+                        <div class="col-12">
+                            <label>Email</label>
+                            <input type="email" name="email" class="form-control" formControlName="email"
+                                placeholder="Email">
+                            <span *ngIf="registerForm.get('email').invalid && submitForm">*please enter your email</span>
+
+                        </div>
+                        <div class="col-12">
+                            <label>Password</label>
+                            <input type="password" name="password" class="form-control" formControlName="password"
+                                placeholder="Password">
+                            <span *ngIf="registerForm.get('password').invalid && submitForm">*password is required</span>
+
+                        </div>
+                        <div class="col-12">
+                            <label>Gender</label>
+                            <input type="text" name="gender" class="form-control" formControlName="gender"
+                                placeholder="Gender">
+                            <span *ngIf="registerForm.get('gender').invalid && submitForm">*please enter your gender</span>
+
+                        </div>
+                        <div class="col-12">
+                            <label>City</label>
+                            <input type="text" name="city" class="form-control" formControlName="city"
+                                placeholder="City">
+                            <span *ngIf="registerForm.get('city').invalid && submitForm">*please enter your city</span>
+
+                        </div>
+                        <div class="col-12">
+                            <button type="submit" class="btn btn-dark">Register</button>
+                        </div>
+                    </form>
+                    <hr class="mt-4">
+                    <div class="col-12">
+                        <button type="submit" routerLink="/" class="btn btn-warning">Log In</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://www.markuptag.com/bootstrap/5/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="home">
+        <p>Home Page</p>
+    </div><br>
+    <div>
+        <p>
+            <button (click)="logout()" class="btn btn-danger btn-circle text-uppercase">Logout</button>
+        </p>
+        <p>
+            <button routerLink="/all-users" class="btn btn-primary btn-circle">User Details</button>
+        </p>
+    </div>
+    <br>
+    <form [formGroup]="postForm" (ngSubmit)="postSubmit(postForm)">
+        <div class="form-group mb-3 px-md-5">
+            <input type="text" class="form-control" formControlName="content" id="exampleInputEmail1" aria-describedby="emailHelp"
+                placeholder="Write Your post here">
+        </div>
+        <button type="submit" id="btn" class="btn btn-primary">Post</button>
+    </form>
+    <br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-3" *ngFor="let post of posts; let i = index">
+                <div class="card border-primary">
+                    <div class="card-body">
+                        <h5 class="card-title">{{post.user.name}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{post.createdAt | date: 'medium'}}</h6>
+                        <p class="card-text">{{post.content}}</p>
+                        <a routerLink="/post/{{post.id}}" class="btn btn-circle btn-warning">View Details</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

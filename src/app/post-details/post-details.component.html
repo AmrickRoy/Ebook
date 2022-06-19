@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.0/css/all.min.css"
+        integrity="sha512-BnbUDfEUfV0Slx6TunuB042k9tuKe3xrD6q4mg5Ed72LTgzDIcLPxg6yI2gcMFRyomt+yJJxE+zJwNmxki6/RA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title></title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="card border-dark" style="background-color: rgb(182, 249, 252);">
+            <div class="card-body">
+                <h3 class="card-title mt-2 mb-3">{{post.user.name}}</h3>
+                <h5 class="card-subtitle mb-2 text-muted">{{post.createdAt | date: 'medium'}}</h5>
+                <h4 class="card-text">{{post.content}}</h4>
+            </div>
+        </div>
+    </div>
+    <br>
+
+    <form [formGroup]="commentForm" (ngSubmit)="commentSubmit(commentForm)">
+        <div class="row mb-3 px-md-5">
+            <div class="col-sm-13">
+                <input type="text" class="form-control" placeholder="Add Your Comment Here" formControlName="content">
+            </div>
+        </div>
+        <button type="submit" id="btn" class="btn btn-primary btn-circle ">Comment</button>
+    </form>
+    <br>
+
+    <div class="like">
+        <button (click)="addRemoveLike(post.id)" class="btn btn-primary">{{likeText}}</button>
+        {{likeCount}} people like this post..
+    </div>
+
+    <div class="comments"><a class="btn btn-warning btn-circle " data-toggle="collapse"><span
+                class="glyphicon glyphicon-comment"></span>{{comments.length}} comments</a><br><br>
+    </div>
+
+
+    <div class="media-body" *ngFor="let comment of comments; let i = index">
+        <div class="well well-lg">
+            <h4 class="media-heading text-uppercase reviews"><b>{{comment.user.name}}</b></h4>
+            <p class="media-heading1 text-uppercase reviews">{{comment.createdAt}}</p>
+            <p class="media-comment">{{comment.content}}</p>
+            <a class="btn btn-info btn-circle text-uppercase" id="reply"><span
+                    class="glyphicon glyphicon-share-alt"></span>Reply</a>
+        </div>
+    </div>
+</body>
+
+</html>

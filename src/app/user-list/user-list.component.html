@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-2" *ngFor="let user of users; let i = index">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">{{user.name}}</h5>
+                        <h6 class="card-subtitle mb-2 text-muted">{{user.email}}</h6>
+                        <p class="card-text">{{user.city}}</p>
+                        <button routerLink="/chats/{{user.userId}}" type="button"
+                            class="btn btn-warning  card-link">Start Chat</button><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
